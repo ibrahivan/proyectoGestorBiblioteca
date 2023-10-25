@@ -15,8 +15,8 @@
 	<!-- Es necesario un proveedor de persistencia jpa para que jakarta.persistence funcione-->
     <dependency>
       <groupId>org.eclipse.persistence</groupId>
-      <artifactId>org.eclipse.persistence.jpa</artifactId>
-      <version>3.0.0</version>
+    <artifactId>eclipselink</artifactId>
+    <version>2.7.7</version> <!-- Cambia esta versión -->
     </dependency>
 
   	<dependency> <!-- https://jakarta.ee/specifications/persistence/-->
