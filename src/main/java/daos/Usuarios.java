@@ -1,47 +1,62 @@
-package dtos;
+package daos;
 
 import java.util.Calendar;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+
+
 
 @Entity
+@Table(name="usuarios", schema="gbp_operacional")
 public class Usuarios {
-	@Column
+	@Column(name="id_usuario", nullable=false)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_usuario;
-	@Column
+	
+	@Column(name="dni_usuario", nullable=false)
     private String dni_usuario;
-	@Column
+	
+	@Column(name="nombre_usuario")
     private String nombre_usuario;
-	@Column
+	
+	@Column(name="apellidos_usuario")
     private String apellidos_usuario;
-	@Column
+	
+	@Column(name="tlf_usuario")
     private String tlf_usuario;
-	@Column
+	
+	@Column(name="email_usuario")
     private String email_usuario;
-	@Column
+	
+	@Column(name="clave_usuario")
     private String clave_usuario;
-	@Column
+	
+	@Column(name="estaBloqueado_usuario")
     private Boolean estaBloqueado_usuario;
-	@Column
+	
+	@Column(name="fch_fin_bloqueo_usuario")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar fch_fin_bloqueo_usuario;
-	@Column
+	
+	@Column(name="fch_alta__usuario")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar fch_alta__usuario;
-	@Column
+	
+	@Column(name="fch_baja_usuario")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar fch_baja_usuario;
-	@Column
+	
+	@Column(name="id_acceso")
 	private Long id_acceso; 
 	
 	 @OneToMany(mappedBy = "id_acceso") // Mapea la relación uno a muchos con la propiedad "usuario" en la clase Acceso
@@ -120,10 +135,19 @@ public class Usuarios {
 	public void setId_acceso(Long id_acceso) {
 		this.id_acceso = id_acceso;
 	}
-	public Usuarios(String dni_usuario, String nombre_usuario, String apellidos_usuario, String tlf_usuario,
-			String email_usuario, String clave_usuario, Boolean estaBloqueado_usuario, Calendar fch_alta__usuario
-			) {
+	
+	//Constructores
+	
+	public Usuarios() {
 		super();
+	}
+	
+	public Usuarios(Long id_usuario, String dni_usuario, String nombre_usuario, String apellidos_usuario,
+			String tlf_usuario, String email_usuario, String clave_usuario, Boolean estaBloqueado_usuario,
+			Calendar fch_fin_bloqueo_usuario, Calendar fch_alta__usuario, Calendar fch_baja_usuario, Long id_acceso,
+			List<Accesos> accesos) {
+		super();
+		this.id_usuario = id_usuario;
 		this.dni_usuario = dni_usuario;
 		this.nombre_usuario = nombre_usuario;
 		this.apellidos_usuario = apellidos_usuario;
@@ -131,12 +155,25 @@ public class Usuarios {
 		this.email_usuario = email_usuario;
 		this.clave_usuario = clave_usuario;
 		this.estaBloqueado_usuario = estaBloqueado_usuario;
+		this.fch_fin_bloqueo_usuario = fch_fin_bloqueo_usuario;
 		this.fch_alta__usuario = fch_alta__usuario;
-		
+		this.fch_baja_usuario = fch_baja_usuario;
+		this.id_acceso = id_acceso;
+		this.accesos = accesos;
+	}
+	public Usuarios(String string, String string2, String string3, String string4, String string5, String string6,
+			boolean b, Calendar instance) {
+		// TODO Auto-generated constructor stub
 	}
 	
 	
-	//Constructor
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

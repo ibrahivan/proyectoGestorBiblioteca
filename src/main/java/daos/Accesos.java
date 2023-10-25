@@ -1,22 +1,26 @@
-package dtos;
+package daos;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name="Accesos", schema="gbp_operacional")
 public class Accesos {
-	@Column
+	@Column(name="id_acceso", nullable=false)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_acceso;
-    @Column
+	
+	@Column(name="codigo_acceso")
     private String codigo_acceso;
-    @Column
+	
+	@Column(name="descripcion_acceso")
     private String descripcion_acceso;
     
     @ManyToOne // Mapea la relación muchos a uno con la clase Usuario
@@ -47,11 +51,23 @@ public class Accesos {
 	 
     //Constructor
 	
-	public Accesos(String codigo_acceso, String descripcion_acceso) {
+	public Accesos() {
 		super();
+	}
+	
+	public Accesos(Long id_acceso, String codigo_acceso, String descripcion_acceso, Usuarios usuarios) {
+		super();
+		this.id_acceso = id_acceso;
 		this.codigo_acceso = codigo_acceso;
 		this.descripcion_acceso = descripcion_acceso;
+		this.usuarios = usuarios;
 	}
-   
+	public Accesos(String string, String string2) {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
+	
 	
 }

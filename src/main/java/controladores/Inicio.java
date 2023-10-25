@@ -2,25 +2,27 @@ package controladores;
 
 import java.util.Calendar;
 
-import dtos.Accesos;
-import dtos.Usuarios;
-import servicios.AccesosRepository;
-import servicios.ImplAccesos;
-import servicios.ImplUsuarios;
-import servicios.UsuariosRepository;
+import daos.Accesos;
+import daos.Usuarios;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
 public class Inicio {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		UsuariosRepository usuarios = new ImplUsuarios();
-		AccesosRepository accesos = new ImplAccesos();
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
 		Usuarios usuario1 = new Usuarios("77959838T","Ivan","Vazquez","954444648","alumno!","ivan12@gmail.com",false,Calendar.getInstance());
-		Accesos acceso1= new Accesos("web","Acceso mediante pagina web");
+		Accesos acceso1= new Accesos("Usuario","Acceso usuarios biblioteca");
+		em.persist(usuario1);
+		em.persist(acceso1);
+		em.getTransaction().commit();
+		em.close();
 		
-		usuarios.save(usuario1);
-		accesos.save(acceso1);
 	}
 
 }

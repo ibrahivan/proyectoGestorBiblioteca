@@ -6,24 +6,28 @@
   
    
  <dependencies>
-	 <!-- Dependencia para Spring Data JPA -->
-		<dependency>
-    		<groupId>javax.persistence</groupId>
-    		<artifactId>javax.persistence-api</artifactId>
-			<version>2.2</version> 
-		</dependency>
-		
-		<dependency>
-    		<groupId>org.springframework.boot</groupId>
-    		<artifactId>spring-boot-starter-data-jpa</artifactId>
-    		 <version>2.5.4</version>
-		</dependency>
-		<!-- Dependencia para PostgresSQL-->
-		<dependency>
-   		 	<groupId>org.postgresql</groupId>
-    		<artifactId>postgresql</artifactId>
-    		<version>42.2.23</version>
-		</dependency>
+	
+	<dependency>
+	  <groupId>org.postgresql</groupId>
+	  <artifactId>postgresql</artifactId>
+	  <version>42.6.0</version>
+	</dependency>
+	<!-- Es necesario un proveedor de persistencia jpa para que jakarta.persistence funcione-->
+    <dependency>
+      <groupId>org.eclipse.persistence</groupId>
+      <artifactId>org.eclipse.persistence.jpa</artifactId>
+      <version>3.0.0</version>
+    </dependency>
+
+  	<dependency> <!-- https://jakarta.ee/specifications/persistence/-->
+      <groupId>jakarta.persistence</groupId>
+      <artifactId>jakarta.persistence-api</artifactId>
+      <version>3.1.0</version>
+	</dependency>
+  
  </dependencies>
-    
+     <properties>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+    </properties>
 </project>
