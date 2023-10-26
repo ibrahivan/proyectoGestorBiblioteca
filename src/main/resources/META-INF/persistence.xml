@@ -6,13 +6,22 @@
 <persistence-unit name="default">   
         <class>daos.Accesos</class>
         <class>daos.Usuarios</class>
+        <class>daos.Prestamos</class>
+        <class>daos.EstadosPrestamos</class>
+        <class>daos.Libros</class>
+        <class>daos.Generos</class>
+        <class>daos.Colecciones</class>
+        <class>daos.Editoriales</class>
+        <class>daos.RelAutoresLibros</class>
+        <class>daos.Autores</class>
+        
         <exclude-unlisted-classes/>
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/gestorBibliotecaPersonal"/>
             <property name="jakarta.persistence.jdbc.user" value="postgres"/>
             <property name="jakarta.persistence.jdbc.password" value="alumno"/>
-            <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
         </properties>
     </persistence-unit>
     <!-- none: No schema creation or deletion will take place.

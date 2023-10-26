@@ -1,12 +1,13 @@
 package daos;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -23,30 +24,9 @@ public class Accesos {
 	@Column(name="descripcion_acceso")
     private String descripcion_acceso;
     
-    @ManyToOne // Mapea la relación muchos a uno con la clase Usuario
-    @JoinColumn(name = "id_acceso") // Nombre de la columna FK en la tabla Acceso
-    private Usuarios usuarios;
+	@OneToMany(mappedBy="acceso") // Mapea la relación uno a muchos con la propiedad "acceso" en la clase Ususarios
+	List<Usuarios> usuariosConAcceso;
 
-    
-    //getters/setters
-	public Long getId_acceso() {
-		return id_acceso;
-	}
-	public void setId_acceso(Long id_acceso) {
-		this.id_acceso = id_acceso;
-	}
-	public String getCodigo_acceso() {
-		return codigo_acceso;
-	}
-	public void setCodigo_acceso(String codigo_acceso) {
-		this.codigo_acceso = codigo_acceso;
-	}
-	public String getDescripcion_acceso() {
-		return descripcion_acceso;
-	}
-	public void setDescripcion_acceso(String descripcion_acceso) {
-		this.descripcion_acceso = descripcion_acceso;
-	}
 	
 	 
     //Constructor
@@ -55,16 +35,22 @@ public class Accesos {
 		super();
 	}
 	
-	public Accesos(Long id_acceso, String codigo_acceso, String descripcion_acceso, Usuarios usuarios) {
+	
+	
+	public Accesos(String codigo_acceso, String descripcion_acceso) {
+		super();
+		this.codigo_acceso = codigo_acceso;
+		this.descripcion_acceso = descripcion_acceso;
+	}
+	
+	public Accesos(Long id_acceso, String codigo_acceso, String descripcion_acceso, List<Usuarios> usuariosConAcceso) {
 		super();
 		this.id_acceso = id_acceso;
 		this.codigo_acceso = codigo_acceso;
 		this.descripcion_acceso = descripcion_acceso;
-		this.usuarios = usuarios;
+		this.usuariosConAcceso = usuariosConAcceso;
 	}
-	public Accesos(String string, String string2) {
-		// TODO Auto-generated constructor stub
-	}
+	
 	
 	
 	

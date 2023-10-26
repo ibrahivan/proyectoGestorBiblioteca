@@ -16,7 +16,7 @@
     <dependency>
       <groupId>org.eclipse.persistence</groupId>
     <artifactId>eclipselink</artifactId>
-    <version>2.7.7</version> <!-- Cambia esta versión -->
+    <version>3.0.0</version> <!-- Cambia esta versión -->
     </dependency>
 
   	<dependency> <!-- https://jakarta.ee/specifications/persistence/-->
