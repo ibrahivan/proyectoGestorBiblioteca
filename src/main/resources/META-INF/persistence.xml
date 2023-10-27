@@ -4,16 +4,16 @@
              xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
              version="3.0">
 <persistence-unit name="default">   
-        <class>daos.Accesos</class>
-        <class>daos.Usuarios</class>
-        <class>daos.Prestamos</class>
-        <class>daos.EstadosPrestamos</class>
-        <class>daos.Libros</class>
-        <class>daos.Generos</class>
-        <class>daos.Colecciones</class>
-        <class>daos.Editoriales</class>
-        <class>daos.RelAutoresLibros</class>
-        <class>daos.Autores</class>
+        <class>daos.Acceso</class>
+        <class>daos.Usuario</class>
+        <class>daos.Prestamo</class>
+        <class>daos.EstadoPrestamo</class>
+        <class>daos.Libro</class>
+        <class>daos.Genero</class>
+        <class>daos.Coleccion</class>
+        <class>daos.Editorial</class>
+        <class>daos.RelAutorLibro</class>
+        <class>daos.Autor</class>
         
         <exclude-unlisted-classes/>
         <properties>

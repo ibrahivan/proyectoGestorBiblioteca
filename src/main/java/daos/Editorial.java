@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="Editoriales", schema="gbp_operacional")
-public class Editoriales {
+public class Editorial {
     @Id
     @Column(name = "id_editorial")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,14 +22,14 @@ public class Editoriales {
     private String nombre_editorial;
     
     @OneToMany(mappedBy="editorial") // Mapea la relación uno a muchos con la propiedad "editorial" en la clase Libros
-	List<Libros> librosEditoriales;
+    private List<Libro> librosEditoriales;
 
     //Constructores
-    public Editoriales() {
+    public Editorial() {
     	
     }
 
-	public Editoriales(String nombre_editorial) {
+	public Editorial(String nombre_editorial) {
 		super();
 		this.nombre_editorial = nombre_editorial;
 	}

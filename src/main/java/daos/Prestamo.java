@@ -16,7 +16,7 @@ import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name="Prestamos", schema="gbp_operacional")
-public class Prestamos {
+public class Prestamo {
     @Id
     @Column(name = "id_prestamo")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,11 +24,11 @@ public class Prestamos {
 
     @ManyToOne
     @JoinColumn(name = "id_usuario")
-    Usuarios usuario;
+    Usuario usuario;
     
     @OneToOne
     @JoinColumn(name = "id_libro")
-    Libros libro;
+    Libro libro;
 
     @Column(name = "fch_inicio_prestamo")
     @Temporal(TemporalType.TIMESTAMP)
@@ -44,19 +44,19 @@ public class Prestamos {
 
     @ManyToOne
     @JoinColumn(name = "id_estado_prestamo")
-    EstadosPrestamos estadoPrestamo;
+    private EstadoPrestamo estadoPrestamo;
 
 
     
     //Constructores
-    public Prestamos() {
+    public Prestamo() {
 		super();
 	}
 
 
 
-	public Prestamos(Usuarios usuario, Libros libro, Calendar fch_inicio_prestamo, Calendar fch_fin_prestamo,
-			Calendar fch_entrega_prestamo, EstadosPrestamos estadoPrestamo) {
+	public Prestamo(Usuario usuario, Libro libro, Calendar fch_inicio_prestamo, Calendar fch_fin_prestamo,
+			Calendar fch_entrega_prestamo, EstadoPrestamo estadoPrestamo) {
 		super();
 		this.usuario = usuario;
 		this.libro = libro;

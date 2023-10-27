@@ -18,18 +18,17 @@ public class Inicio {
 		EntityManager em = emf.createEntityManager();
 		
 		//Hago datos de prueba, incluido dos autores para el mismo libro
-		Accesos acceso1= new Accesos("Usu","Acceso usuarios biblioteca");
-		EstadosPrestamos estadopres1=new EstadosPrestamos("Activo","Esta activo del prestamo");
-		Generos genero1 = new Generos("Deportes","Libro que desarrolla la vida de un fan del futbol");
-		Editoriales editorial1= new Editoriales("FanFutbol");
-		Colecciones coleccion1= new Colecciones("LaLiga");
-		Autores autor1 = new Autores("Ivan","Vazquez Perez");
-		Autores autor2 = new Autores("Ale","Alcerreca");
-		Usuarios usuario1 = new Usuarios("77959838T","Ivan","Vazquez","954444648","ivan12@gmail.com","alumno!",false,Calendar.getInstance(),Calendar.getInstance(), acceso1);
-		Libros libro1= new Libros("87496266D","Futboleros","3",8,editorial1, genero1, coleccion1);
-		RelAutoresLibros relAutoresLib1= new RelAutoresLibros(autor1,libro1);
-		RelAutoresLibros relAutoresLib2 = new RelAutoresLibros(autor2,libro1);
-		Prestamos prestamo1 = new Prestamos(usuario1,libro1,Calendar.getInstance(),Calendar.getInstance(),Calendar.getInstance(),estadopres1);
+		Acceso acceso1= new Acceso("Usu","Acceso usuarios biblioteca");
+		EstadoPrestamo estadopres1=new EstadoPrestamo("Activo","Esta activo del prestamo");
+		Genero genero1 = new Genero("Deportes","Libro que desarrolla la vida de un fan del futbol");
+		Editorial editorial1= new Editorial("FanFutbol");
+		Coleccion coleccion1= new Coleccion("LaLiga");
+		Autor autor1 = new Autor("Ivan","Vazquez Perez");
+		Autor autor2 = new Autor("Ale","Alcerreca");
+		Usuario usuario1 = new Usuario("77959838T","Ivan","Vazquez","954444648","ivan12@gmail.com","alumno!",false,Calendar.getInstance(),Calendar.getInstance(), acceso1);
+		Libro libro1= new Libro("87496266D","Futboleros","3",8,editorial1, genero1, coleccion1);
+		
+		Prestamo prestamo1 = new Prestamo(usuario1,libro1,Calendar.getInstance(),Calendar.getInstance(),Calendar.getInstance(),estadopres1);
 		
 		
 		//Realizo las transacciones
@@ -46,10 +45,9 @@ public class Inicio {
 		em.persist(genero1);
 		em.persist(editorial1);
 		em.persist(coleccion1);
-		em.persist(relAutoresLib1);
-		em.persist(relAutoresLib2);
 		em.persist(autor1);
 		em.persist(autor2);
+		
 	//commit para que lo mande a la bd
 		em.getTransaction().commit();
 	//cierro las transacciones

@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="EstadosPrestamos", schema="gbp_operacional")
-public class EstadosPrestamos {
+public class EstadoPrestamo {
     @Id
     @Column(name = "id_estado_prestamo")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,15 +25,15 @@ public class EstadosPrestamos {
     private String descripcion_estado_prestamo;
 
 	@OneToMany(mappedBy="estadoPrestamo")
-	List<Prestamos>prestamosEstado;
+	private List<Prestamo> listaprestamosEstado;
     
     //Constructores
     
-    public EstadosPrestamos() {
+    public EstadoPrestamo() {
 		super();
 	}
 
-	public EstadosPrestamos(String codigo_estado_prestamo, String descripcion_estado_prestamo) {
+	public EstadoPrestamo(String codigo_estado_prestamo, String descripcion_estado_prestamo) {
 		super();
 		this.codigo_estado_prestamo = codigo_estado_prestamo;
 		this.descripcion_estado_prestamo = descripcion_estado_prestamo;

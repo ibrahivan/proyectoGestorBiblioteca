@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="Accesos", schema="gbp_operacional")
-public class Accesos {
+public class Acceso {
 	@Column(name="id_acceso", nullable=false)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,25 +25,25 @@ public class Accesos {
     private String descripcion_acceso;
     
 	@OneToMany(mappedBy="acceso") // Mapea la relación uno a muchos con la propiedad "acceso" en la clase Ususarios
-	List<Usuarios> usuariosConAcceso;
+	private List<Usuario> usuariosConAcceso;
 
 	
 	 
     //Constructor
 	
-	public Accesos() {
+	public Acceso() {
 		super();
 	}
 	
 	
 	
-	public Accesos(String codigo_acceso, String descripcion_acceso) {
+	public Acceso(String codigo_acceso, String descripcion_acceso) {
 		super();
 		this.codigo_acceso = codigo_acceso;
 		this.descripcion_acceso = descripcion_acceso;
 	}
 	
-	public Accesos(Long id_acceso, String codigo_acceso, String descripcion_acceso, List<Usuarios> usuariosConAcceso) {
+	public Acceso(Long id_acceso, String codigo_acceso, String descripcion_acceso, List<Usuario> usuariosConAcceso) {
 		super();
 		this.id_acceso = id_acceso;
 		this.codigo_acceso = codigo_acceso;

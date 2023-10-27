@@ -7,12 +7,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name="Autores", schema="gbp_operacional")
-public class Autores {
+public class Autor {
     @Id
     @Column(name = "id_autor")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,16 +24,16 @@ public class Autores {
     @Column(name = "apellidos_autor")
     private String apellidos_autor;
 
-    @OneToMany(mappedBy="autor")
-    List<RelAutoresLibros>autoresRelAutores;
+    @ManyToMany
+    private List<Libro>listaLibros;
     
     
-    public Autores() {
+    public Autor() {
     	
     }
 
 
-	public Autores(String nombre_autor, String apellidos_autor) {
+	public Autor(String nombre_autor, String apellidos_autor) {
 		super();
 		this.nombre_autor = nombre_autor;
 		this.apellidos_autor = apellidos_autor;

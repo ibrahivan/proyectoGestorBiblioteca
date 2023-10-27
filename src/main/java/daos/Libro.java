@@ -8,13 +8,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name="Libros", schema="gbp_operacional")
-public class Libros {
+public class Libro {
     @Id
     @Column(name = "id_libro")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,29 +35,29 @@ public class Libros {
     
     @ManyToOne
     @JoinColumn(name = "id_editorial")
-    Editoriales editorial;
+    private Editorial editorial;
 
  
     @ManyToOne
     @JoinColumn(name = "id_genero")
-    Generos genero;
+    private Genero genero;
 
     @ManyToOne
     @JoinColumn(name = "id_coleccion")
-    Colecciones coleccion;
+    private Coleccion coleccion;
 
     @OneToMany(mappedBy="libro") // Mapea la relación uno a muchos con la propiedad "usuario" en la clase Prestamos
-	List<Prestamos> librosPrestamos;
+    private List<Prestamo> librosPrestamos;
     
-    @OneToMany(mappedBy="libro")
-    List<RelAutoresLibros>librosRelAutores;
+    @ManyToMany(mappedBy="listaLibros")
+    private List<Autor>listaAutores;
     
   //Constructores
-    public Libros() {
+    public Libro() {
     }
 
-public Libros(String isbn_libro, String titulo_libro, String edicion_libro, int cantidad_libro, Editoriales editorial,
-		Generos genero, Colecciones coleccion) {
+public Libro(String isbn_libro, String titulo_libro, String edicion_libro, int cantidad_libro, Editorial editorial,
+		Genero genero, Coleccion coleccion) {
 	super();
 	this.isbn_libro = isbn_libro;
 	this.titulo_libro = titulo_libro;
@@ -68,8 +69,8 @@ public Libros(String isbn_libro, String titulo_libro, String edicion_libro, int 
 
 }
 
-public Libros(String isbn_libro, String titulo_libro, String edicion_libro, int cantidad_libro, Editoriales editorial,
-		Generos genero, Colecciones coleccion, List<Prestamos> librosPrestamos) {
+public Libro(String isbn_libro, String titulo_libro, String edicion_libro, int cantidad_libro, Editorial editorial,
+		Genero genero, Coleccion coleccion, List<Prestamo> librosPrestamos) {
 	super();
 	this.isbn_libro = isbn_libro;
 	this.titulo_libro = titulo_libro;

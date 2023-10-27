@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="Generos", schema="gbp_operacional")
-public class Generos {
+public class Genero {
     @Id
     @Column(name = "id_genero")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,13 +25,13 @@ public class Generos {
     private String descripcion_genero;
 
     @OneToMany(mappedBy="genero") // Mapea la relación uno a muchos con la propiedad "genero" en la clase Libros
-	List<Libros> librosGeneros;
+    private List<Libro> librosGeneros;
     
     //Constructores
-    public Generos() {
+    public Genero() {
     }
 
-	public Generos(String nombre_genero, String descripcion_genero) {
+	public Genero(String nombre_genero, String descripcion_genero) {
 		super();
 		this.nombre_genero = nombre_genero;
 		this.descripcion_genero = descripcion_genero;

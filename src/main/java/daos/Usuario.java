@@ -19,7 +19,7 @@ import jakarta.persistence.TemporalType;
 
 @Entity
 @Table(name="Usuarios", schema="gbp_operacional")
-public class Usuarios {
+public class Usuario {
 	@Column(name="id_usuario", nullable=false)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -66,21 +66,21 @@ public class Usuarios {
 	    
 	@ManyToOne  							// Mapea la relación muchos a uno con la clase Accesos
 	@JoinColumn(name="id_acceso")			// Nombre de la columna FK en la tabla Usuarios
-	Accesos acceso;
+	private Acceso acceso;							//El JoinColum es oslo para especificar el nombre que quieres que tenga
 
     @OneToMany(mappedBy="usuario") // Mapea la relación uno a muchos con la propiedad "usuario" en la clase Prestamos
-	List<Prestamos> usuariosConPrestamos;
+    private List<Prestamo> listausuariosConPrestamos;
 	
 	
 	//Constructores
 	
-	public Usuarios() {
+	public Usuario() {
 		super();
 	}
 	
-	public Usuarios(String dni_usuario, String nombre_usuario, String apellidos_usuario,
+	public Usuario(String dni_usuario, String nombre_usuario, String apellidos_usuario,
 			String tlf_usuario, String email_usuario, String clave_usuario, Boolean estaBloqueado_usuario,
-			Calendar fch_fin_bloqueo_usuario, Calendar fch_alta__usuario, Accesos acceso) {
+			Calendar fch_fin_bloqueo_usuario, Calendar fch_alta__usuario, Acceso acceso) {
 		super();
 		
 		this.dni_usuario = dni_usuario;
