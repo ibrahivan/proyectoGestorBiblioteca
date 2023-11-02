@@ -27,7 +27,26 @@ public class Genero {
     @OneToMany(mappedBy="genero") // Mapea la relación uno a muchos con la propiedad "genero" en la clase Libros
     private List<Libro> librosGeneros;
     
-    //Constructores
+    
+    
+    
+    public int getId_genero() {
+		return id_genero;
+	}
+
+	public String getNombre_genero() {
+		return nombre_genero;
+	}
+
+	public String getDescripcion_genero() {
+		return descripcion_genero;
+	}
+
+	public List<Libro> getLibrosGeneros() {
+		return librosGeneros;
+	}
+
+	//Constructores
     public Genero() {
     }
 
@@ -35,7 +54,10 @@ public class Genero {
 		super();
 		this.nombre_genero = nombre_genero;
 		this.descripcion_genero = descripcion_genero;
+	
 	}
+
+
     
     
 }

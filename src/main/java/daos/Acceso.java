@@ -29,8 +29,24 @@ public class Acceso {
 
 	
 	 
-    //Constructor
+    
 	
+
+	public String getCodigo_acceso() {
+		return codigo_acceso;
+	}
+
+
+	public String getDescripcion_acceso() {
+		return descripcion_acceso;
+	}
+
+
+	public List<Usuario> getUsuariosConAcceso() {
+		return usuariosConAcceso;
+	}
+	//Constructores
+
 	public Acceso() {
 		super();
 	}
@@ -39,16 +55,10 @@ public class Acceso {
 	
 	public Acceso(String codigo_acceso, String descripcion_acceso) {
 		super();
+		
 		this.codigo_acceso = codigo_acceso;
 		this.descripcion_acceso = descripcion_acceso;
-	}
-	
-	public Acceso(Long id_acceso, String codigo_acceso, String descripcion_acceso, List<Usuario> usuariosConAcceso) {
-		super();
-		this.id_acceso = id_acceso;
-		this.codigo_acceso = codigo_acceso;
-		this.descripcion_acceso = descripcion_acceso;
-		this.usuariosConAcceso = usuariosConAcceso;
+		
 	}
 	
 	

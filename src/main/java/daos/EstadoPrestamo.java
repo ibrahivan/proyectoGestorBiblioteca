@@ -26,10 +26,27 @@ public class EstadoPrestamo {
 
 	@OneToMany(mappedBy="estadoPrestamo")
 	private List<Prestamo> listaprestamosEstado;
+
+  
+    public int getId_estado_prestamo() {
+		return id_estado_prestamo;
+	}
+
+	public String getCodigo_estado_prestamo() {
+		return codigo_estado_prestamo;
+	}
+
+	public String getDescripcion_estado_prestamo() {
+		return descripcion_estado_prestamo;
+	}
+
+	public List<Prestamo> getListaprestamosEstado() {
+		return listaprestamosEstado;
+	}
+
+	  //Constructores
     
-    //Constructores
-    
-    public EstadoPrestamo() {
+	public EstadoPrestamo() {
 		super();
 	}
 

@@ -24,14 +24,32 @@ public class Coleccion {
     @OneToMany(mappedBy="coleccion") // Mapea la relación uno a muchos con la propiedad "coleccion" en la clase Libros
     private List<Libro> librosColeccion;
     
-  //Constructores
+    
+    
+    
+  public int getId_coleccion() {
+		return id_coleccion;
+	}
+
+public String getNombre_coleccion() {
+		return nombre_coleccion;
+	}
+
+	public List<Libro> getLibrosColeccion() {
+		return librosColeccion;
+	}
+
+	//Constructores
     public Coleccion() {
     }
 
 	public Coleccion(String nombre_coleccion) {
 		super();
 		this.nombre_coleccion = nombre_coleccion;
+		this.librosColeccion = librosColeccion;
 	}
+
+	
     
     
 }

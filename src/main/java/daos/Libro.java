@@ -8,9 +8,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -46,18 +46,69 @@ public class Libro {
     @JoinColumn(name = "id_coleccion")
     private Coleccion coleccion;
 
-    @OneToMany(mappedBy="libro") // Mapea la relación uno a muchos con la propiedad "usuario" en la clase Prestamos
-    private List<Prestamo> librosPrestamos;
+    @ManyToMany
+	@JoinTable(
+	        name = "rel_prestamos_libros",
+	        schema = "gbp_operacional",
+	        joinColumns = @JoinColumn(name = "id_libro_FK"),
+	        inverseJoinColumns = @JoinColumn( name = "id_prestamo_FK"))
+	List<Prestamo> prestamoConLibro;
     
-    @ManyToMany(mappedBy="listaLibros")
-    private List<Autor>listaAutores;
+    @ManyToMany
+	@JoinTable(
+	        name = "rel_autores_libros",
+	        schema = "gbp_operacional",
+	        
+	        joinColumns = @JoinColumn( name = "id_libro_FK"),
+	        inverseJoinColumns = @JoinColumn( name = "id_autor_FK"))
+	List<Autor> autorConLibro;
     
-  //Constructores
+  public int getId_libro() {
+		return id_libro;
+	}
+
+	public String getIsbn_libro() {
+		return isbn_libro;
+	}
+
+	public String getTitulo_libro() {
+		return titulo_libro;
+	}
+
+	public String getEdicion_libro() {
+		return edicion_libro;
+	}
+
+	public int getCantidad_libro() {
+		return cantidad_libro;
+	}
+
+	public Editorial getEditorial() {
+		return editorial;
+	}
+
+	public Genero getGenero() {
+		return genero;
+	}
+
+	public Coleccion getColeccion() {
+		return coleccion;
+	}
+
+	public List<Prestamo> getPrestamoConLibro() {
+		return prestamoConLibro;
+	}
+
+	public List<Autor> getAutorConLibro() {
+		return autorConLibro;
+	}
+
+	//Constructores
     public Libro() {
     }
 
 public Libro(String isbn_libro, String titulo_libro, String edicion_libro, int cantidad_libro, Editorial editorial,
-		Genero genero, Coleccion coleccion) {
+		Genero genero, Coleccion coleccion, List<Autor> autorConLibro) {
 	super();
 	this.isbn_libro = isbn_libro;
 	this.titulo_libro = titulo_libro;
@@ -66,21 +117,12 @@ public Libro(String isbn_libro, String titulo_libro, String edicion_libro, int c
 	this.editorial = editorial;
 	this.genero = genero;
 	this.coleccion = coleccion;
-
+	this.prestamoConLibro = prestamoConLibro;
+	this.autorConLibro = autorConLibro;
 }
 
-public Libro(String isbn_libro, String titulo_libro, String edicion_libro, int cantidad_libro, Editorial editorial,
-		Genero genero, Coleccion coleccion, List<Prestamo> librosPrestamos) {
-	super();
-	this.isbn_libro = isbn_libro;
-	this.titulo_libro = titulo_libro;
-	this.edicion_libro = edicion_libro;
-	this.cantidad_libro = cantidad_libro;
-	this.editorial = editorial;
-	this.genero = genero;
-	this.coleccion = coleccion;
-	this.librosPrestamos = librosPrestamos;
-}
+
+
 
 
 

@@ -24,20 +24,52 @@ public class Autor {
     @Column(name = "apellidos_autor")
     private String apellidos_autor;
 
-    @ManyToMany
-    private List<Libro>listaLibros;
+    
+    @ManyToMany(mappedBy = "autorConLibro")
+	List<Libro> libroConAutor;
+   
     
     
-    public Autor() {
+    public int getId_autor() {
+		return id_autor;
+	}
+
+
+
+	public String getNombre_autor() {
+		return nombre_autor;
+	}
+
+
+
+	public String getApellidos_autor() {
+		return apellidos_autor;
+	}
+
+
+
+	public List<Libro> getLibroConAutor() {
+		return libroConAutor;
+	}
+
+	//Constructores
+
+
+	public Autor() {
     	
     }
+
 
 
 	public Autor(String nombre_autor, String apellidos_autor) {
 		super();
 		this.nombre_autor = nombre_autor;
 		this.apellidos_autor = apellidos_autor;
+		this.libroConAutor = libroConAutor;
 	}
+
+
+	
     
     
 }

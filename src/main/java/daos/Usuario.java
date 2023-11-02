@@ -71,9 +71,63 @@ public class Usuario {
     @OneToMany(mappedBy="usuario") // Mapea la relación uno a muchos con la propiedad "usuario" en la clase Prestamos
     private List<Prestamo> listausuariosConPrestamos;
 	
+    
+    
 	
 	//Constructores
 	
+	public Long getId_usuario() {
+		return id_usuario;
+	}
+
+	public String getDni_usuario() {
+		return dni_usuario;
+	}
+
+	public String getNombre_usuario() {
+		return nombre_usuario;
+	}
+
+	public String getApellidos_usuario() {
+		return apellidos_usuario;
+	}
+
+	public String getTlf_usuario() {
+		return tlf_usuario;
+	}
+
+	public String getEmail_usuario() {
+		return email_usuario;
+	}
+
+	public String getClave_usuario() {
+		return clave_usuario;
+	}
+
+	public Boolean getEstaBloqueado_usuario() {
+		return estaBloqueado_usuario;
+	}
+
+	public Calendar getFch_fin_bloqueo_usuario() {
+		return fch_fin_bloqueo_usuario;
+	}
+
+	public Calendar getFch_alta__usuario() {
+		return fch_alta__usuario;
+	}
+
+	public Calendar getFch_baja_usuario() {
+		return fch_baja_usuario;
+	}
+
+	public Acceso getAcceso() {
+		return acceso;
+	}
+
+	public List<Prestamo> getListausuariosConPrestamos() {
+		return listausuariosConPrestamos;
+	}
+
 	public Usuario() {
 		super();
 	}

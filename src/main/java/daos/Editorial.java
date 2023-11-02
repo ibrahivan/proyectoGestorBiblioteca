@@ -24,7 +24,22 @@ public class Editorial {
     @OneToMany(mappedBy="editorial") // Mapea la relación uno a muchos con la propiedad "editorial" en la clase Libros
     private List<Libro> librosEditoriales;
 
-    //Constructores
+    
+    
+    
+    public int getId_editorial() {
+		return id_editorial;
+	}
+
+	public String getNombre_editorial() {
+		return nombre_editorial;
+	}
+
+	public List<Libro> getLibrosEditoriales() {
+		return librosEditoriales;
+	}
+
+	//Constructores
     public Editorial() {
     	
     }
@@ -32,7 +47,10 @@ public class Editorial {
 	public Editorial(String nombre_editorial) {
 		super();
 		this.nombre_editorial = nombre_editorial;
+		this.librosEditoriales = librosEditoriales;
 	}
+
+	
     
     
 }
